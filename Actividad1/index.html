@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad DOM</title>
+  <style>
+    .tarea {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    .item-lista {
+      margin: 5px 0;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Actividad Práctica: Manipulación del DOM</h1>
+
+  <div id="contenedor-tareas">
+    <!-- Tarea 1: Modificar texto -->
+    <div class="tarea" id="tarea1">
+      <h2>Tarea 1: Modificar Texto</h2>
+      <p id="texto-inicial">Este es un texto inicial</p>
+      <button onclick="modificarTexto()">Cambiar Texto</button>
+    </div>
+
+    <!-- Tarea 2: Cambiar estilos -->
+    <div class="tarea" id="tarea2">
+      <h2>Tarea 2: Cambiar Estilos</h2>
+      <div id="caja-estilo">Caja con estilo inicial</div>
+      <button onclick="cambiarEstilo()">Cambiar Estilo</button>
+    </div>
+
+    <!-- Tarea 3: Añadir elementos -->
+    <div class="tarea" id="tarea3">
+      <h2>Tarea 3: Añadir Elementos</h2>
+      <ul id="lista-dinamica">
+        <li class="item-lista">Elemento 1</li>
+        <li class="item-lista">Elemento 2</li>
+      </ul>
+      <button onclick="agregarElemento()">Añadir Elemento</button>
+    </div>
+
+    <!-- Tarea 4: Eliminar elementos -->
+    <div class="tarea" id="tarea4">
+      <h2>Tarea 4: Eliminar Elementos</h2>
+      <ul id="lista-eliminar">
+        <li class="item-lista">Elemento A</li>
+        <li class="item-lista">Elemento B</li>
+        <li class="item-lista">Elemento C</li>
+      </ul>
+      <button onclick="eliminarElemento()">Eliminar Último Elemento</button>
+    </div>
+  </div>
+
+  <script>
+    //Tarea 1 Script
+    function modificarTexto() {
+        const modifique = document.getElementById("texto-inicial");
+        modifique.textContent = "Este es un texto modificado, HOLIII";
+    }
+
+    //Tarea 2 Script
+    function cambiarEstilo() {
+        const cajaEstilo = document.querySelector("#caja-estilo");
+        cajaEstilo.style.backgroundColor = "yellow";
+        cajaEstilo.style.color = "black";
+        cajaEstilo.style.padding = "15px";
+        cajaEstilo.style.border = '2px solid black'
+    }
+
+    //Tarea 3 Script usar createElement, textContent y appendChild para añadir un nuveo elemento a la lista
+    function agregarElemento() {
+        const listaDinamica = document.querySelector("#lista-dinamica");
+
+        const elementoExistente = listaDinamica.querySelectorAll ('.item-lista')
+
+       const nuevoNumElemento = elementoExistente.length + 1;
+
+       const nuevoElemento = document.createElement ('li');
+       nuevoElemento.textContent = `Elemento ${nuevoNumElemento}`;
+       nuevoElemento.classList.add ('item-lista');
+
+       listaDinamica.appendChild (nuevoElemento);
+        
+    }
+
+    //tarea 4.
+    function eliminarElemento() {
+      const listaEliminar = document.querySelectorAll('#lista-eliminar li');
+      const ultimoElemento = listaEliminar[listaEliminar.length - 1];
+      ultimoElemento.remove();
+    }
+
+  </script>
+</body>
+</html>
